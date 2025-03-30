@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="31" failures="0" time="9.448">
+  <testsuite name="RutearRouter" errors="0" failures="0" skipped="0" timestamp="2025-03-30T19:02:34" time="3.17" tests="4">
+    <testcase classname="RutearRouter asignarRuta debería retornar respuesta exitosa cuando RutearUseCase funciona" name="RutearRouter asignarRuta debería retornar respuesta exitosa cuando RutearUseCase funciona" time="0.004">
+    </testcase>
+    <testcase classname="RutearRouter asignarRuta debería retornar error cuando RutearUseCase falla" name="RutearRouter asignarRuta debería retornar error cuando RutearUseCase falla" time="0">
+    </testcase>
+    <testcase classname="RutearRouter registrarNovedades debería retornar respuesta exitosa cuando NovedadesUseCase funciona" name="RutearRouter registrarNovedades debería retornar respuesta exitosa cuando NovedadesUseCase funciona" time="0">
+    </testcase>
+    <testcase classname="RutearRouter registrarNovedades debería retornar error cuando NovedadesUseCase falla" name="RutearRouter registrarNovedades debería retornar error cuando NovedadesUseCase falla" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="RutaDAO" errors="0" failures="0" skipped="0" timestamp="2025-03-30T19:02:34" time="3.233" tests="5">
+    <testcase classname="RutaDAO debería guardar ruta y retornar el ID correctamente" name="RutaDAO debería guardar ruta y retornar el ID correctamente" time="0.003">
+    </testcase>
+    <testcase classname="RutaDAO debería retornar 0 si no se retorna ningún resultado en guardarRuta" name="RutaDAO debería retornar 0 si no se retorna ningún resultado en guardarRuta" time="0.001">
+    </testcase>
+    <testcase classname="RutaDAO debería lanzar UNAUTHORIZED si ocurre un error en guardarRuta" name="RutaDAO debería lanzar UNAUTHORIZED si ocurre un error en guardarRuta" time="0.001">
+    </testcase>
+    <testcase classname="RutaDAO debería actualizar ruta correctamente" name="RutaDAO debería actualizar ruta correctamente" time="0">
+    </testcase>
+    <testcase classname="RutaDAO debería lanzar UNAUTHORIZED si ocurre un error en actualizarRuta" name="RutaDAO debería lanzar UNAUTHORIZED si ocurre un error en actualizarRuta" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="RutasEnvioDAO" errors="0" failures="0" skipped="0" timestamp="2025-03-30T19:02:34" time="3.289" tests="5">
+    <testcase classname="RutasEnvioDAO debería guardar la ruta del envío sin errores" name="RutasEnvioDAO debería guardar la ruta del envío sin errores" time="0.007">
+    </testcase>
+    <testcase classname="RutasEnvioDAO debería lanzar UNAUTHORIZED si falla guardarRutaEnvio" name="RutasEnvioDAO debería lanzar UNAUTHORIZED si falla guardarRutaEnvio" time="0.001">
+    </testcase>
+    <testcase classname="RutasEnvioDAO debería retornar el id de la ruta si existe" name="RutasEnvioDAO debería retornar el id de la ruta si existe" time="0">
+    </testcase>
+    <testcase classname="RutasEnvioDAO debería retornar null si no encuentra resultado" name="RutasEnvioDAO debería retornar null si no encuentra resultado" time="0.001">
+    </testcase>
+    <testcase classname="RutasEnvioDAO debería lanzar UNAUTHORIZED si falla obtenerRutasEnvio" name="RutasEnvioDAO debería lanzar UNAUTHORIZED si falla obtenerRutasEnvio" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="NovedadesUseCase" errors="0" failures="0" skipped="0" timestamp="2025-03-30T19:02:34" time="3.39" tests="4">
+    <testcase classname="NovedadesUseCase debería registrar novedad correctamente" name="NovedadesUseCase debería registrar novedad correctamente" time="0.005">
+    </testcase>
+    <testcase classname="NovedadesUseCase debería lanzar error si no se encuentra el idEnvio" name="NovedadesUseCase debería lanzar error si no se encuentra el idEnvio" time="0.012">
+    </testcase>
+    <testcase classname="NovedadesUseCase debería lanzar error si el nombre de la novedad no es válido" name="NovedadesUseCase debería lanzar error si el nombre de la novedad no es válido" time="0">
+    </testcase>
+    <testcase classname="NovedadesUseCase debería lanzar error si ocurre un fallo interno" name="NovedadesUseCase debería lanzar error si ocurre un fallo interno" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="NovedadesDAO" errors="0" failures="0" skipped="0" timestamp="2025-03-30T19:02:34" time="3.419" tests="2">
+    <testcase classname="NovedadesDAO debería registrar la novedad sin errores" name="NovedadesDAO debería registrar la novedad sin errores" time="0.008">
+    </testcase>
+    <testcase classname="NovedadesDAO debería lanzar UNAUTHORIZED si falla la inserción" name="NovedadesDAO debería lanzar UNAUTHORIZED si falla la inserción" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="RutearUseCase" errors="0" failures="0" skipped="0" timestamp="2025-03-30T19:02:34" time="3.452" tests="2">
+    <testcase classname="RutearUseCase debería ejecutar ruteo correctamente sin envíos excedidos" name="RutearUseCase debería ejecutar ruteo correctamente sin envíos excedidos" time="0.004">
+    </testcase>
+    <testcase classname="RutearUseCase debería guardar ruta con envíos y actualizar redis" name="RutearUseCase debería guardar ruta con envíos y actualizar redis" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="RuteoModules" errors="0" failures="0" skipped="0" timestamp="2025-03-30T19:02:38" time="0.225" tests="2">
+    <testcase classname="RuteoModules debe retornar la ruta base correctamente" name="RuteoModules debe retornar la ruta base correctamente" time="0.001">
+    </testcase>
+    <testcase classname="RuteoModules debe registrar las rutas correctamente" name="RuteoModules debe registrar las rutas correctamente" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="EnviosRedis" errors="0" failures="0" skipped="0" timestamp="2025-03-30T19:02:38" time="0.251" tests="2">
+    <testcase classname="EnviosRedis debería guardar registros en Redis correctamente" name="EnviosRedis debería guardar registros en Redis correctamente" time="0.001">
+    </testcase>
+    <testcase classname="EnviosRedis debería eliminar todos los datos de Redis con flushAll" name="EnviosRedis debería eliminar todos los datos de Redis con flushAll" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="EnvioDAO" errors="0" failures="0" skipped="0" timestamp="2025-03-30T19:02:34" time="6.433" tests="5">
+    <testcase classname="EnvioDAO debería retornar envíos sin procesar correctamente" name="EnvioDAO debería retornar envíos sin procesar correctamente" time="0.003">
+    </testcase>
+    <testcase classname="EnvioDAO debería lanzar UNAUTHORIZED si falla obtenerEnviosSinProcesarPorPrioridadYTerminal" name="EnvioDAO debería lanzar UNAUTHORIZED si falla obtenerEnviosSinProcesarPorPrioridadYTerminal" time="0.001">
+    </testcase>
+    <testcase classname="EnvioDAO debería actualizar correctamente los estados de los envíos" name="EnvioDAO debería actualizar correctamente los estados de los envíos" time="0.001">
+    </testcase>
+    <testcase classname="EnvioDAO debería lanzar UNAUTHORIZED si no se actualizan todos los registros" name="EnvioDAO debería lanzar UNAUTHORIZED si no se actualizan todos los registros" time="3.07">
+    </testcase>
+    <testcase classname="EnvioDAO no debe ejecutar actualización si la lista de IDs está vacía" name="EnvioDAO no debe ejecutar actualización si la lista de IDs está vacía" time="0.002">
+    </testcase>
+  </testsuite>
+</testsuites>

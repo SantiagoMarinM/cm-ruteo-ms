@@ -55,19 +55,15 @@ export class FastifyServer implements IServer {
     private printIncomming = async () => {
         this.app.addHook('onSend', async (req: FastifyRequest, reply: FastifyReply, payloadResponse) => {
             const incommingData = this.buildDataLog(req);
-            const requestLogs = (req as any).logData; // Aquí están los logs acumulados
+            const requestLogs = (req as any).logData;
             console.log(
-                JSON.stringify(
-                    {
-                        statusCode: reply.statusCode,
-                        RESPONSE: req.url,
-                        incommingData,
-                        requestLogs,
-                        payloadResponse,
-                    },
-                    null,
-                    2,
-                ),
+                JSON.stringify({
+                    statusCode: reply.statusCode,
+                    RESPONSE: req.url,
+                    incommingData,
+                    requestLogs,
+                    payloadResponse,
+                }),
             );
         });
     };

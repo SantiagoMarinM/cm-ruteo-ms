@@ -22,7 +22,7 @@ export default class RutearRouter {
             const rutear = await rutearUseCase.execute(data, logger);
             return Result.ok({ data: rutear, message: 'Ruta asignada correctamente' });
         } catch (error) {
-            return Result.failure(error);
+            return Result.failure(error, 501);
         }
     }
 
