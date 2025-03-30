@@ -6,12 +6,12 @@ const getRedisConnection = (): RedisClient => {
     const host = ENV.REDIS_HOST ?? 'localhost';
     const adapter = redis.createClient(+port, host, { connect_timeout: 10000 });
     adapter.on('error', (e) => {
-        console.log('REDIS CLIENTE TOKEN ERROR ==> ', JSON.stringify(e?.message ?? e));
+        console.log('REDIS UNIDADES TOKEN ERROR ==> ', JSON.stringify(e?.message ?? e));
     });
     adapter.on('connect', () => {
         const date = new Date().toLocaleString();
         adapter.rpush('CONEXIONES', `Conectado ${date}`);
-        console.log('CONEXIÓN DE REDIS AUTENTICACION ESTABLECIDA');
+        console.log('CONEXIÓN DE REDIS UNIDADES ESTABLECIDA');
     });
     return adapter;
 };
