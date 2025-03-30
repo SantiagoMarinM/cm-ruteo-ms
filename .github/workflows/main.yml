@@ -38,9 +38,9 @@ jobs:
       - name: Create ENV File
         run: echo ${{ secrets.ENV_PROD }} | base64 --decode > .env
 
-      # - name: Run tests with coverage
-      #   run: |
-      #     export $(cat .env | grep -v '^#' | xargs) && npm run test:coverage
+      - name: Run tests with coverage
+        run: |
+          export $(cat .env | grep -v '^#' | xargs) && npm run test:coverage
 
       - name: Google Cloud authentication
         uses: google-github-actions/auth@v1
