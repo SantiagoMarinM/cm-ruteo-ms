@@ -65,3 +65,9 @@ Este módulo gestiona las operaciones relacionadas con la asignación de rutas y
 - Utilizado como almacenamiento temporal para las prioridades de los envíos.
 - Clave para reducir la carga a la base de datos y mejorar la velocidad de lectura/escritura.
 
+---
+
+## Autor y mantenimiento
+
+- Desarrollado como parte de examen de seniority para la empresa Coordinadora Mercantil.
+- Se recomienda utilizar yarn como gestor de paquetes y versiones de Node por encima de la 18.
