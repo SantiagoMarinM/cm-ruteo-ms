@@ -1,18 +1,22 @@
 # Módulo de Ruteo
 
-Este módulo gestiona la asignación de rutas para envíos y el registro de novedades asociadas al proceso logístico.
+Este módulo gestiona las operaciones relacionadas con la asignación de rutas y el registro de novedades asociadas a los envíos.
+
+---
 
 ## Endpoints Disponibles
 
-| Método | Ruta       | Descripción                                            |
-|--------|------------|---------------------------------------------------------|
-| POST   | /rutas     | Calcula y asigna una ruta a un equipo según su ubicación y capacidad |
-| POST   | /novedades | Registra una novedad (como lluvia o tráfico) asociada a un envío |
+| Método | Ruta         | Descripción                                   |
+|--------|--------------|-----------------------------------------------|
+| POST   | /rutas       | Calcula y asigna una ruta basada en la capacidad del equipo y la cercanía de los envíos. |
+| POST   | /novedades   | Registra una novedad asociada a un envío.     |
+
+---
 
 ## Clases Principales
 
 ### RutearUseCase
-**Responsabilidad:** Asignar rutas a un equipo basado en su ubicación, capacidad y prioridad de envíos.
+**Responsabilidad:** Asignar una ruta optimizada a un equipo vehicular.
 
 **Dependencias:**
 - `IRutaRepository`
@@ -22,36 +26,42 @@ Este módulo gestiona la asignación de rutas para envíos y el registro de nove
 - `ILogger`
 
 **Flujo:**
-1. Guarda una nueva ruta con estado "asignando rutas".
-2. Recupera los envíos según prioridad desde Redis o base de datos.
-3. Ordena los envíos por distancia usando `geolib`.
-4. Filtra envíos excedentes de capacidad (peso/volumen).
-5. Guarda los envíos validados en la ruta y actualiza su estado.
-6. Actualiza Redis con los envíos no asignados.
-7. Finaliza la ruta actualizando su estado a "asignación finalizada".
+1. Se crea un registro de ruta con estado `ASIGNANDO_RUTAS`.
+2. Se recuperan los envíos por prioridad desde Redis o BD.
+3. Se ordenan los envíos por distancia desde la posición actual del equipo.
+4. Se validan los envíos según la capacidad del vehículo (peso y volumen).
+5. Se actualizan los estados de los envíos procesados y se guardan en la ruta.
+6. Se actualiza el estado de la ruta a `ASIGNACION_FINALIZADA`.
 
 ### NovedadesUseCase
-**Responsabilidad:** Registrar una novedad (climática o de tráfico) relacionada a un envío específico.
+**Responsabilidad:** Registrar una novedad asociada a un envío.
 
 **Dependencias:**
-- `IRutaEnvioRepository`
 - `INovedadesRepository`
+- `IRutaEnvioRepository`
 - `ILogger`
 
 **Flujo:**
-1. Busca el `idEnvio` en base al código de etiqueta.
-2. Valida si el nombre de la novedad corresponde a las aceptadas (`lluvia`, `tráfico`).
-3. Registra la novedad con su ID correspondiente.
-4. Guarda logs informativos en el proceso.
-
-## Consideraciones
-- **Inversify** se usa para la inyección de dependencias.
-- **Redis** actúa como caché para los envíos clasificados por prioridad.
-- **Geolib** permite ordenar los puntos de entrega según distancia.
-- **CustomError** y **UNAUTHORIZED** se utilizan para el manejo estructurado de errores.
-- Las novedades se identifican por palabras clave contenidas en el campo `nombre_novedad`.
+1. Consulta si existe un envío asociado a la etiqueta proporcionada.
+2. Mapea el texto de la novedad a un ID correspondiente.
+3. Registra la novedad en la base de datos.
 
 ---
 
-Este módulo es parte de un sistema logístico más grande orientado a la eficiencia de reparto mediante asignación inteligente de rutas y monitoreo de eventos relevantes durante la operación.
+## Consideraciones
+- Se utiliza `InversifyJS` para inyección de dependencias.
+- Redis funciona como cache para mejorar el rendimiento al consultar envíos por prioridad.
+- Las rutas se asignan de forma geoespacial (usando coordenadas) y optimizando por cercanía y capacidad.
+
+---
+
+## Paquetes
+
+### `geolib`
+- Se utiliza para ordenar los envíos según su distancia al equipo.
+- Método clave: `orderByDistance`
+
+### `redis`
+- Utilizado como almacenamiento temporal para las prioridades de los envíos.
+- Clave para reducir la carga a la base de datos y mejorar la velocidad de lectura/escritura.
 
